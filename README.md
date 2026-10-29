@@ -5,7 +5,6 @@ A browser-based calculator built with HTML, CSS, and vanilla JavaScript as part 
 ## Team Roles
 
 - **Roberto:** Core arithmetic functions (`add`, `subtract`, `multiply`, `divide`) and `operate()`
-- **Siraj:** State management, operation chaining, and edge case evaluation
 - **Jehosue:** HTML/CSS layout, display updates, user controls, and keyboard event handling
 
 ## Features
