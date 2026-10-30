@@ -12,7 +12,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b === 0) {
-        return "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾";
+        return "⚡ WARNING! 👾";
     }
     return a / b;
 }
@@ -71,7 +71,7 @@ function updateDisplay() {
 }
 
 function inputDigit(digit) {
-    if (shouldResetScreen || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
+    if (shouldResetScreen || currentInput === "⚡ WARNING! 👾") {
         currentInput = digit;
         shouldResetScreen = false;
         waitingForSecondOperand = false;
@@ -90,7 +90,7 @@ function inputDigit(digit) {
 }
 
 function inputDecimal() {
-    if (shouldResetScreen || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
+    if (shouldResetScreen || currentInput === "⚡ WARNING! 👾") {
         currentInput = "0.";
         shouldResetScreen = false;
         waitingForSecondOperand = false;
@@ -113,7 +113,7 @@ function inputDecimal() {
 }
 
 function handleOperator(nextOperator) {
-    if (currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
+    if (currentInput === "⚡ WARNING! 👾") {
         return;
     }
 
@@ -131,7 +131,7 @@ function handleOperator(nextOperator) {
     } else if (currentOperator) {
         const result = operate(currentOperator, firstOperand, inputValue);
 
-        if (result === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
+        if (result === "⚡ WARNING! 👾") {
             currentInput = result;
             firstOperand = null;
             currentOperator = null;
@@ -152,14 +152,14 @@ function handleOperator(nextOperator) {
 }
 
 function handleEquals() {
-    if (currentOperator === null || waitingForSecondOperand || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
+    if (currentOperator === null || waitingForSecondOperand || currentInput === "⚡ WARNING! 👾") {
         return;
     }
 
     const secondOperand = parseFloat(currentInput);
     const result = operate(currentOperator, firstOperand, secondOperand);
 
-    if (result === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
+    if (result === "⚡ WARNING! 👾") {
         previousOperandDisplay.textContent = `${roundResult(firstOperand)} ${getOperatorSymbol(currentOperator)} 0 =`;
         currentInput = result;
         firstOperand = null;
@@ -190,7 +190,7 @@ function handleClear() {
 }
 
 function handleBackspace() {
-    if (shouldResetScreen || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
+    if (shouldResetScreen || currentInput === "⚡ WARNING! 👾") {
         handleClear();
         return;
     }
