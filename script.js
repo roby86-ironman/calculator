@@ -12,7 +12,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b === 0) {
-        return "Cannot divide by 0";
+        return "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾";
     }
     return a / b;
 }
@@ -71,7 +71,7 @@ function updateDisplay() {
 }
 
 function inputDigit(digit) {
-    if (shouldResetScreen || currentInput === "Cannot divide by 0") {
+    if (shouldResetScreen || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
         currentInput = digit;
         shouldResetScreen = false;
         waitingForSecondOperand = false;
@@ -90,7 +90,7 @@ function inputDigit(digit) {
 }
 
 function inputDecimal() {
-    if (shouldResetScreen || currentInput === "Cannot divide by 0") {
+    if (shouldResetScreen || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
         currentInput = "0.";
         shouldResetScreen = false;
         waitingForSecondOperand = false;
@@ -105,7 +105,7 @@ function inputDecimal() {
         return;
     }
 
-    // Prevent multiple decimals in the same number
+  
     if (!currentInput.includes(".")) {
         currentInput += ".";
         updateDisplay();
@@ -113,7 +113,7 @@ function inputDecimal() {
 }
 
 function handleOperator(nextOperator) {
-    if (currentInput === "Cannot divide by 0") {
+    if (currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
         return;
     }
 
@@ -131,7 +131,7 @@ function handleOperator(nextOperator) {
     } else if (currentOperator) {
         const result = operate(currentOperator, firstOperand, inputValue);
 
-        if (result === "Cannot divide by 0") {
+        if (result === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
             currentInput = result;
             firstOperand = null;
             currentOperator = null;
@@ -152,14 +152,14 @@ function handleOperator(nextOperator) {
 }
 
 function handleEquals() {
-    if (currentOperator === null || waitingForSecondOperand || currentInput === "Cannot divide by 0") {
+    if (currentOperator === null || waitingForSecondOperand || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
         return;
     }
 
     const secondOperand = parseFloat(currentInput);
     const result = operate(currentOperator, firstOperand, secondOperand);
 
-    if (result === "Cannot divide by 0") {
+    if (result === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
         previousOperandDisplay.textContent = `${roundResult(firstOperand)} ${getOperatorSymbol(currentOperator)} 0 =`;
         currentInput = result;
         firstOperand = null;
@@ -190,7 +190,7 @@ function handleClear() {
 }
 
 function handleBackspace() {
-    if (shouldResetScreen || currentInput === "Cannot divide by 0") {
+    if (shouldResetScreen || currentInput === "⚡ WARNING! You've opened a portal to the Upside Down. Division by zero is not allowed! 👾") {
         handleClear();
         return;
     }
@@ -208,7 +208,7 @@ function handleBackspace() {
     updateDisplay();
 }
 
-// Button click handling
+
 keypad.addEventListener("click", function (event) {
     const target = event.target;
     if (!target.matches("button")) return;
@@ -261,7 +261,7 @@ window.addEventListener("keydown", function (event) {
         handleOperator("*");
         triggerButtonEffect("#multiply-btn");
     } else if (key === "/") {
-        event.preventDefault(); // Prevent quick search in browsers like Firefox
+        event.preventDefault(); 
         handleOperator("/");
         triggerButtonEffect("#divide-btn");
     } else if (key === "Enter" || key === "=") {
